@@ -1,0 +1,15 @@
+num = @{ int ~ ("." ~ ASCII_DIGIT*)? ~ (^"e" ~ int)? }
+    int = { ("+" | "-")? ~ ASCII_DIGIT+ }
+operation = _{ add | subtract | multiply | divide | remainder | power }
+    add       = { "+" }
+    subtract  = { "-" }
+    multiply  = { "*" }
+    divide    = { "/" }
+    remainder = { "%" }
+    power     = { "^" }
+
+expression = { term ~ (operation ~ term)* }
+term = _{ num | "(" ~ expression ~ ")" }
+calculation = _{ SOI ~ expression ~ EOI }
+
+WHITESPACE = _{ " " | "\t" }

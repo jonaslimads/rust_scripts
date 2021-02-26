@@ -1,0 +1,21 @@
+[package]
+name = "grpc"
+version = "0.1.0"
+authors = ["Jonas Lima <jonaslimads@gmail.com>"]
+edition = "2018"
+
+[[bin]] # Bin to run the gRPC server
+name = "grpc-server"
+path = "src/server.rs"
+
+[[bin]] # Bin to run the gRPC client
+name = "grpc-client"
+path = "src/client.rs"
+
+[dependencies]
+tonic = "0.4"
+prost = "0.7"
+tokio = { version = "1.0", features = ["macros", "rt-multi-thread"] }
+
+[build-dependencies]
+tonic-build = "0.4"
