@@ -1,0 +1,55 @@
+version: '3.8'
+x-restart-policy: &restart-policy
+  restart: unless-stopped
+x-logging: &logging
+  logging:
+    driver: json-file
+    options:
+      max-size: "100m"
+      max-file: "15"
+x-network: &network
+  networks:
+    - rust
+
+services:
+  rabbitmq:
+    image: rabbitmq:alpine
+    container_name: rabbitmq
+    <<: *restart-policy
+    <<: *logging
+    <<: *network
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    environment:
+      - RABBITMQ_DEFAULT_USER=root
+      - RABBITMQ_DEFAULT_PASS=admin
+
+  kafka:
+    image: wurstmeister/kafka:latest
+    container_name: kafka
+    <<: *restart-policy
+    <<: *logging
+    <<: *network
+    ports:
+      - 9092:9092
+    depends_on:
+      - zookeeper
+    environment:
+      - KAFKA_ZOOKEEPER_CONNECT=zookeeper:2181
+      - KAFKA_LISTENERS=INSIDE://:9092,OUTSIDE://:9094
+      - KAFKA_LISTENER_SECURITY_PROTOCOL_MAP=INSIDE:PLAINTEXT,OUTSIDE:PLAINTEXT
+      - KAFKA_INTER_BROKER_LISTENER_NAME=INSIDE
+      - KAFKA_CREATE_TOPICS=crate_study:1:1
+
+  zookeeper:
+    image: wurstmeister/zookeeper:latest
+    container_name: zookeeper
+    <<: *restart-policy
+    <<: *logging
+    <<: *network
+    ports:
+      - 2181:2181
+
+networks:
+  rust:

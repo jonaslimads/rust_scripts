@@ -1,0 +1,67 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug executable 'crate_study' (AMQP)",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--bin=crate_study",
+                    "--package=crate_study",
+                    "--features",
+                    "amqp"
+                ],
+                "filter": {
+                    "name": "crate_study",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug executable 'crate_study' (Kafka)",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--bin=crate_study",
+                    "--package=crate_study",
+                    "--features",
+                    "kafka"
+                ],
+                "filter": {
+                    "name": "crate_study",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in executable 'crate_study'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--bin=crate_study",
+                    "--package=crate_study"
+                ],
+                "filter": {
+                    "name": "crate_study",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        }
+    ]
+}
