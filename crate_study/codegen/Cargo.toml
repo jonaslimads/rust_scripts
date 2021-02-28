@@ -1,0 +1,17 @@
+[package]
+name = "codegen"
+version = "0.1.0"
+authors = ["Jonas Lima <jonaslimads@gmail.com>"]
+edition = "2018"
+
+[lib]
+proc-macro = true
+
+[features]
+default = []
+amqp = ["lapin"]
+kafka = ["rust_kafka"]
+
+[dependencies]
+lapin = { version = "1.6.8", optional = true}
+rust_kafka = { package = "kafka", version = "0.8", optional = true}

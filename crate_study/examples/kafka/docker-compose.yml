@@ -12,19 +12,6 @@ x-network: &network
     - rust
 
 services:
-  rabbitmq:
-    image: rabbitmq:alpine
-    container_name: rabbitmq
-    <<: *restart-policy
-    <<: *logging
-    <<: *network
-    ports:
-      - "5672:5672"
-      - "15672:15672"
-    environment:
-      - RABBITMQ_DEFAULT_USER=root
-      - RABBITMQ_DEFAULT_PASS=admin
-
   kafka:
     image: wurstmeister/kafka:latest
     container_name: kafka

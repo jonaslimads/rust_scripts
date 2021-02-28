@@ -7,42 +7,20 @@
         {
             "type": "lldb",
             "request": "launch",
-            "name": "Debug executable 'crate_study' (AMQP)",
+            "name": "Debug example_rabbitmq",
             "cargo": {
                 "args": [
                     "build",
-                    "--bin=crate_study",
-                    "--package=crate_study",
-                    "--features",
-                    "amqp"
+                    "--bin=example_rabbitmq",
+                    "--package=example_rabbitmq"
                 ],
                 "filter": {
-                    "name": "crate_study",
+                    "name": "example_rabbitmq",
                     "kind": "bin"
                 }
             },
             "args": [],
-            "cwd": "${workspaceFolder}"
-        },
-        {
-            "type": "lldb",
-            "request": "launch",
-            "name": "Debug executable 'crate_study' (Kafka)",
-            "cargo": {
-                "args": [
-                    "build",
-                    "--bin=crate_study",
-                    "--package=crate_study",
-                    "--features",
-                    "kafka"
-                ],
-                "filter": {
-                    "name": "crate_study",
-                    "kind": "bin"
-                }
-            },
-            "args": [],
-            "cwd": "${workspaceFolder}"
+            "cwd": "${workspaceFolder}/examples/rabbitmq"
         },
         {
             "type": "lldb",

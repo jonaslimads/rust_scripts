@@ -1,0 +1,12 @@
+[package]
+name = "example_rabbitmq"
+version = "0.1.0"
+authors = ["Jonas Lima <jonaslimads@gmail.com>"]
+edition = "2018"
+
+[dependencies]
+
+[dependencies.codegen]
+path = "../../codegen"
+default-features = false
+features = ["amqp"]

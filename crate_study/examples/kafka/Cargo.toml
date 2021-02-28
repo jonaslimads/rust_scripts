@@ -1,0 +1,7 @@
+[package]
+name = "example_kafka"
+version = "0.1.0"
+authors = ["Jonas Lima <jonaslimads@gmail.com>"]
+edition = "2018"
+
+[dependencies]
